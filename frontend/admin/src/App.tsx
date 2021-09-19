@@ -1,32 +1,39 @@
 import * as React from 'react';
-import Container from '@mui/material/Container';
-import Typography from '@mui/material/Typography';
-import Box from '@mui/material/Box';
-import Link from '@mui/material/Link';
-import ProTip from './ProTip';
-
-function Copyright() {
-	return (
-		<Typography variant="body2" color="text.secondary" align="center">
-			{'Copyright © '}
-			<Link color="inherit" href="https://mui.com/">
-				Your Website
-			</Link>{' '}
-			{new Date().getFullYear()}.
-		</Typography>
-	);
-}
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import Login from './pages/authentication/Login';
+import Register from './pages/authentication/Register';
 
 export default function App() {
 	return (
-		<Container maxWidth="sm">
-			<Box sx={{ my: 4 }}>
-				<Typography variant="h4" component="h1" gutterBottom>
-					Create React App v5-beta example with TypeScript
-				</Typography>
-				<ProTip />
-				<Copyright />
-			</Box>
-		</Container>
+		<div>
+			<Router basename="admin">
+				<div>
+					<nav>
+						<ul>
+							<li>
+								<Link to="/">Home</Link>
+							</li>
+							<li>
+								<Link to="/about">About</Link>
+							</li>
+							<li>
+								<Link to="/users">Users</Link>
+							</li>
+						</ul>
+					</nav>
+					<Switch>
+						<Route path="/login">
+							<Login />
+						</Route>
+						<Route path="/register">
+							<Register />
+						</Route>
+						<Route path="/">
+							<h1>Home</h1>
+						</Route>
+					</Switch>
+				</div>
+			</Router>
+		</div>
 	);
 }
