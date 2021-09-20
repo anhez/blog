@@ -1,5 +1,8 @@
-import React from 'react';
-
+import { RegisterForm } from '@Components/authentication/register';
 export default function Register() {
-	return <div>Register</div>;
+	return (
+		<div>
+			<RegisterForm />
+		</div>
+	);
 }
